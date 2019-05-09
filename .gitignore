@@ -1,0 +1,26 @@
+
+# data files
+/data/*
+*.csv
+*.xlsx
+*.zip
+*.docx
+
+
+# tableau files
+/reports/dashboards/*
+*.twb
+*.twbr
+*.pptx
+
+# R working files
+*.Rhistory
+*.Rproj
+*.RData
+*.TDataTemp
+.Rproj.user
+
+
+# allow data dictionaries
+!_data_dictionary.xlsx
+!_data_model.png
