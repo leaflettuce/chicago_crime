@@ -28,7 +28,8 @@ if not API_TOKEN:
 param = {'$$app_token' : API_TOKEN,
          #'$select' : 'date, COUNT(date)',   #example query
          #'$group' : 'date',    # example query
-         '$limit' : '700'}
+         '$limit' : '1000000',
+         '$where' : 'year = 2009'}
   
 # API call 
 response = requests.get(URL, params = param)
