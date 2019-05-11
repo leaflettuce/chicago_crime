@@ -39,3 +39,8 @@ df = json_normalize(data)
 
 #drop cols
 df.drop(df.columns[0:8], axis = 1, inplace = True)
+
+# write out
+upload_dir = 'E:/projects/chi_crime/data/raw/'
+upload_file = 'test'
+df.to_csv(upload_dir + upload_file + '.csv', index = False)
