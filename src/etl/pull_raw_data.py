@@ -31,7 +31,7 @@ if not API_TOKEN:
     print("You need to get an City of Chicago API token! Exiting..")
     sys.exit(1)
 
-for year in range(2001, 2020):    
+for year in range(2002, 2020):    
     # set parameters
     param = {'$$app_token' : API_TOKEN,
              #'$select' : 'date, COUNT(date)',   #example query
