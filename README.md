@@ -1,5 +1,5 @@
 # Chicago Crime Analysis and Forecaster
-Data life-cycle project using Chicago crime data set to better understand and predict future crime rates. Conducted for SNHU Data Analytics capstone project.
+Data life-cycle project using Chicago crime data to better understand crime trends in the city and to predict future crime rates for 2019. Conducted for SNHU Data Analytics capstone project.
 
 ## Goals
 ```
@@ -29,7 +29,7 @@ Data life-cycle project using Chicago crime data set to better understand and pr
 	|--> Data located at www.cityofchicago.org
 	|--> To load data through bat file, request API credentials
 	|--> Set API credentials into env variables 
-	|----> user: CHI_API_USER     key: CHI_API_KEY
+	|----> app: CHI_API_TOKEN     key: CHI_SECRET_TOKEN
 
 (2) RUN [___bat_file_to_go_here___]
 	|--> give __ minutes to run
