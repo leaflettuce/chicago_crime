@@ -26,7 +26,7 @@ AND given more time:
 - There is a downward trend (excluding seasonality and cycle) in overall annual crime rates.
 - Temperature has a positive correlation with crime rates.
 AND given more time:
-- Some neighborhoods have high variability in crime rates than others.
+- Some neighborhoods have higher variability in crime rates than others.
 
 ```
 

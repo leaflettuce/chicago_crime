@@ -29,7 +29,7 @@ param = {'$$app_token' : API_TOKEN,
          #'$select' : 'date, COUNT(date)',   #example query
          #'$group' : 'date',    # example query
          '$limit' : '1000000',
-         '$where' : 'year = 2009'}
+         '$where' : 'year = 2019'}
   
 # API call 
 response = requests.get(URL, params = param)
@@ -45,3 +45,6 @@ df.drop(df.columns[0:8], axis = 1, inplace = True)
 upload_dir = 'E:/projects/chi_crime/data/raw/'
 upload_file = 'test'
 df.to_csv(upload_dir + upload_file + '.csv', index = False)
+
+# write smaller test df
+test = df.iloc[0:1000, :]
