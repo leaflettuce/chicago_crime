@@ -20,7 +20,8 @@ for year in range(2001, 2020): # iterate through each year, pulling in raw data 
     else:
         df_agg = pd.concat([df_agg, temp_df])
         
-df_agg = df_agg.reset_index(drop=True)       
+df_agg = df_agg.reset_index(drop=True)      
+ 
 # check it
 df_agg.head()
 df_agg.tail()
