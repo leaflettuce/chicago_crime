@@ -28,8 +28,8 @@ if not API_TOKEN:
 param = {'$$app_token' : API_TOKEN,
          #'$select' : 'date, COUNT(date)',   #example query
          #'$group' : 'date',    # example query
-         '$limit' : '1000000',
-         '$where' : 'year = 2019'}
+         '$limit' : '10000',
+         '$where' : 'year = 2001'}
   
 # API call 
 response = requests.get(URL, params = param)
@@ -37,9 +37,6 @@ data = json.loads(response.text)
 
 # set to df
 df = json_normalize(data)
-
-#drop cols
-df.drop(df.columns[0:8], axis = 1, inplace = True)
 
 # write out
 upload_dir = 'E:/projects/chi_crime/data/raw/'
