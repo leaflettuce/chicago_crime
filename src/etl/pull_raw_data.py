@@ -33,6 +33,7 @@ if not API_TOKEN:
 
 for year in range(2001, 2020):    
     # set parameters
+    print('querying year: ' + str(year))
     param = {'$$app_token' : API_TOKEN,
              #'$select' : 'date, COUNT(date)',   #example query
              #'$group' : 'date',    # example query

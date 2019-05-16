@@ -15,6 +15,10 @@ os.chdir('E:/projects/chi_crime/src/etl/')
 # import
 df = pd.read_csv('../../data/interim/aggregate_data.csv')
 
+##########################
+### Feature Generation ###
+##########################
+
 # set time
 df['time'] = ''
 df.time = df.date.str[11:-7]
@@ -41,16 +45,49 @@ conditions = [
 choices = ['0 - 8', '8 - 16', '16 - 24']
 df['hour_bin'] = np.select(conditions, choices, default='0')
 
+# add day of week
+df['datetime'] = pd.to_datetime(df.date) # helper col
+df['day_of_week'] = df['datetime'].dt.day_name()
 
+# add week number
+df['week_number'] = df['datetime'].dt.week
+
+# Prune features
+df = df.drop(['datetime', 'full_date'], axis = 1) # drop helper
+
+
+####################
+### aggregation ####
+####################
+df['count'] = 0 # helper col
 # DAILY
 # # Agg daily Counts 
-# # Write Out
+df_daily = df.groupby(['date'])['count'].agg('count')
+df_daily['date'] = df_daily.index
+
+# Write Out
+upload_dir = 'E:/projects/chi_crime/data/processed/'
+upload_file = 'daily_counts'
+df_daily.to_csv(upload_dir + upload_file + '.csv', index = False)
+
 
 # HOURLY
 # # Agg hourly/day Counts 
-# # Write Out
+df_hourly = df.groupby(['date', 'hour'])['count'].agg('count').reset_index()
 
-# SPECIFIC
-# Remove unneeded for time-series, set interval, and write out (interval and rate only)
+# Write Out
+upload_file = 'hourly_counts'
+df_hourly.to_csv(upload_dir + upload_file + '.csv', index = False)
 
-# Agg split on ward and write
+# WEEKLY
+# # Agg weekly Counts 
+df_weekly = df.groupby(['year', 'week_number'])['count'].agg('count').reset_index()
+
+# Write Out
+upload_file = 'weekly_counts'
+df_weekly.to_csv(upload_dir + upload_file + '.csv', index = False)
+
+# FINAL write out
+df = df.drop(['count'], axis = 1)
+upload_file = 'crime'
+df.to_csv(upload_dir + upload_file + '.csv', index = False)
