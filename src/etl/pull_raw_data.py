@@ -31,8 +31,9 @@ if not API_TOKEN:
     print("You need to get an City of Chicago API token! Exiting..")
     sys.exit(1)
 
-for year in range(2002, 2020):    
+for year in range(2001, 2020):    
     # set parameters
+    print('querying year: ' + str(year))
     param = {'$$app_token' : API_TOKEN,
              #'$select' : 'date, COUNT(date)',   #example query
              #'$group' : 'date',    # example query
@@ -45,9 +46,6 @@ for year in range(2002, 2020):
     
     # set to df
     df = json_normalize(data)
-    
-    #drop cols
-    df.drop(df.columns[0:8], axis = 1, inplace = True)
     
     # write out
     upload_dir = 'E:/projects/chi_crime/data/raw/'

@@ -4,28 +4,25 @@ Data life-cycle project using Chicago crime data to better understand crime tren
 ## Goals
 ```
 - Identify outliers and trends within Chicago's crime data through eda
-- Map out crime rates by area of city 
-- Model time-series of daily crime rates to create forecaster
-- Increase accuracy of this forecaster by incorporating external data
-- Create visuals which impart time-series and other crime trends
+- Map out crime rates by area of city (ward)
+- Identify peak hours for Chicago crime to occur.
+- Model time-series of hourly crime rates to create forecaster
+- Create visuals which impart time-series and hourly trends in crime. 
 - Form a final report and presentation to impart Business Value of project to stakeholders
 ```
 
 ## Business Questions
 ```
-- Can daily crime rates be accurately predicted?
-- Are there any specific temporal trends to Chicago crime rates?
-- Does weather have any influence on crime rates?
-AND given more time:
+- Can hourly crime rates be accurately predicted?
+- Are there any temporal trends in the data? 
 - Can predictions be split by neighborhood to specifically identify resource needs?
 ```
 
 ## Hypothesis
 ```
-- Crime rates can be estimated based upon time of year and day of week.
+- Crime rates can be estimated based upon time of hour and day of week..
 - There is a downward trend (excluding seasonality and cycle) in overall annual crime rates.
-- Temperature has a positive correlation with crime rates.
-AND given more time:
+- Certain hours are more likely to have higher rates of crime than others.
 - Some neighborhoods have higher variability in crime rates than others.
 
 ```
@@ -51,9 +48,17 @@ AND given more time:
 	|--> Set API credentials into env variables 
 	|----> app: CHI_API_TOKEN     key: CHI_SECRET_TOKEN
 
-(2) RUN [___bat_file_to_go_here___]
-	|--> give __ minutes to run
+(2) RUN ./src/etl/process_data.bat
+	|--> Give up to 30 minutes to run
 	|--> Cleaned files will write to /data/processed/
+```
+
+## Updating Data (To Do)
+```
+  RUN ./src/etl/update_data.bat
+	|--> Give up to 15 minutes to run
+	|--> Cleaned files will write to /data/processed/
+	|--> Previous data set will store as data/interim/BACKUP-previous_version.csv
 ```
 
 ## Model Overview
