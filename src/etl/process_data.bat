@@ -5,7 +5,7 @@ title Pull and clean Chicago crime data
 echo NOTICE: data storage requires about 7 gigs on local drive. 
 echo Please kill script if insufficient storage available.
 echo Checking and installing requirements..
-pip install -r requirements.txt
+REM pip install -r requirements.txt
 echo .
 echo .
 echo .
@@ -40,7 +40,7 @@ echo Available in data/processed
 echo .
 echo .
 echo .
-echo crime.csv = 
+echo crime.csv = final data set, x_counts = model_requs
 echo .
 echo .
 echo .

@@ -48,9 +48,17 @@ Data life-cycle project using Chicago crime data to better understand crime tren
 	|--> Set API credentials into env variables 
 	|----> app: CHI_API_TOKEN     key: CHI_SECRET_TOKEN
 
-(2) RUN [___bat_file_to_go_here___]
-	|--> give __ minutes to run
+(2) RUN ./src/etl/process_data.bat
+	|--> Give up to 30 minutes to run
 	|--> Cleaned files will write to /data/processed/
+```
+
+## Updating Data (To Do)
+```
+  RUN ./src/etl/update_data.bat
+	|--> Give up to 15 minutes to run
+	|--> Cleaned files will write to /data/processed/
+	|--> Previous data set will store as data/interim/BACKUP-previous_version.csv
 ```
 
 ## Model Overview
