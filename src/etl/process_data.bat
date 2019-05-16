@@ -6,6 +6,7 @@ echo NOTICE: data storage requires about 7 gigs on local drive.
 echo Please kill script if insufficient storage available.
 echo Checking and installing requirements..
 REM pip install -r requirements.txt
+python get_requs.py
 echo .
 echo .
 echo .

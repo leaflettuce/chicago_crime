@@ -51,3 +51,6 @@ for year in range(2001, 2020):
     upload_dir = 'E:/projects/chi_crime/data/raw/'
     upload_file = 'raw_' + str(year)
     df.to_csv(upload_dir + upload_file + '.csv', index = False)
+
+with open('last_update.txt', 'w') as f:
+    f.write(max(df.iloc[:, 5]))

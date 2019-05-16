@@ -53,7 +53,7 @@ Data life-cycle project using Chicago crime data to better understand crime tren
 	|--> Cleaned files will write to /data/processed/
 ```
 
-## Updating Data (To Do)
+## Updating Data
 ```
   RUN ./src/etl/update_data.bat
 	|--> Give up to 15 minutes to run
