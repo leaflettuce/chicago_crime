@@ -31,7 +31,7 @@ Data life-cycle project using Chicago crime data to better understand crime tren
  
 ```
 1 - [X] Import Data
-2 - [ ] Clean, Process, and Load (ETL)
+2 - [X] Clean, Process, and Load (ETL)
 3 - [ ] EDA FTW
 5 - [ ] Explore Time-Series Models
 6 - [ ] Bring in External Data
