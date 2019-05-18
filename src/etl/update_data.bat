@@ -4,7 +4,8 @@ title Updates Chicago crime data
 
 echo Updating crime data based on last import or update.
 echo Please wait ;)
-python updater.pyecho .
+python updater.py
+echo .
 echo .
 echo .
 echo Data Successfully updated!

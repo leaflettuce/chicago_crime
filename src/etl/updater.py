@@ -30,7 +30,7 @@ last_update_datetime = txt_file.read()
 # set parameters
 param = {'$$app_token' : API_TOKEN,
          '$limit' : '1000000',
-         '$where' : "date > " + last_update_datetime}
+         '$where' : 'date > \'' + last_update_datetime + '\''}
   
 # API call 
 response = requests.get(URL, params = param)
@@ -38,8 +38,13 @@ data = json.loads(response.text)
 
 # set to df
 df = json_normalize(data)
+try:
+    df = df.drop(['location.latitude', 'location.longitude'], axis = 1)
+except:
+    pass
+df = df.rename(columns={'location.human_address': 'location'})
 
-# bring in old df
+# bring in old dfs
 df_old = pd.read_csv('../../data/interim/aggregate_data.csv')
 
 # update working df
