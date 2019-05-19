@@ -55,7 +55,7 @@ echo .
 echo .
 echo Creating MySQL Storage and uploading...
 
-:: python load_into_sql.py
+python load_into_sql.py
 
 echo .
 echo .
