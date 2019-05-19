@@ -70,16 +70,21 @@ df_null = df.replace(np.nan, 'NULL', regex=True)
 
 # set pandas df to list 
 crimes_list = df_null.values.tolist()
-# crimes_list = crimes_list[:100]   # remove for final version
+# crimes_list = crimes_list[:100]   # for testing
 
 # insert list into table with helper function
-insert_crime(crimes_list)
+print('loading into SQL 10,000 rows at a time.')
+for i in range(0, len(crimes_list), 10000):
+    print(i + '/' + len(crimes_list))
+    insert_crime(crimes_list[i : i + 10000])
+    
+# commit additions
+cnx.commit()
 
-# test query
-cursor.execute('SELECT * FROM chicago_crime.crime \
-               WHERE year >= 2018 \
-               LIMIT 100;')
-for result in cursor:
-    print(result)
+# test query - for testing
+#cursor.execute('SELECT * FROM chicago_crime.crime \
+#               LIMIT 100;')
+#for result in cursor:
+#    print(result)
 
 cursor.close()

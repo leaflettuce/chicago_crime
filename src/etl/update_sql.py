@@ -8,6 +8,7 @@ Created on Sun May 19 13:45:10 2019
 import os 
 import pandas as pd
 import mysql.connector
+import numpy as np
 from mysql.connector import Error
 
 # setwd
@@ -37,10 +38,18 @@ def insert_crime(crime):
     except Error as e:
         print('Error:', e)
  
+# fix null problem
+df_null = df.replace(np.nan, 'NULL', regex=True)
+
 # set pandas df to list 
-crimes_list = df.values.tolist()
+crimes_list = df_null.values.tolist()
 
 # insert list into table with helper function
-insert_crime(crimes_list)
+print('loading into SQL 10,000 rows at a time.')
+for i in range(0, len(crimes_list), 10000):
+    print(i + '/' + len(crimes_list))
+    insert_crime(crimes_list[i : i + 10000])
+    
+cnx.commit()  # commit additions
 
 cursor.close()
