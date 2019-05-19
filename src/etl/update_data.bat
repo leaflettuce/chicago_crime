@@ -33,7 +33,7 @@ echo .
 echo .
 echo Insertiung new files into MySQL storage...
 
-python update_sql.py
+:: python update_sql.py
 
 echo .
 echo .
