@@ -7,8 +7,7 @@ Created on Sun May 19 06:33:15 2019
 import os 
 import pandas as pd
 import mysql.connector
-from mysql.connector import MySQLConnection, Error
-from python_mysql_dbconfig import read_db_config
+from mysql.connector import Error
 
 # setwd
 os.chdir('E:/projects/chi_crime/src/etl/')

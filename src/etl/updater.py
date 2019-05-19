@@ -44,6 +44,9 @@ except:
     pass
 df = df.rename(columns={'location.human_address': 'location'})
 
+# write out new data
+df.to_csv('../../data/interim/most_recent.csv', index = False)
+
 # bring in old dfs
 df_old = pd.read_csv('../../data/interim/aggregate_data.csv')
 

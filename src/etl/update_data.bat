@@ -4,7 +4,9 @@ title Updates Chicago crime data
 
 echo Updating crime data based on last import or update.
 echo Please wait ;)
+
 python updater.py
+
 echo .
 echo .
 echo .
@@ -14,7 +16,9 @@ echo .
 echo .
 echo .
 echo Cleaning new version of data and processing model requirements...
+
 python clean.py
+
 echo .
 echo .
 echo . 
@@ -24,6 +28,17 @@ echo .
 echo .
 echo .
 echo crime.csv = final data set, [detail_level]_counts = model_requs
+echo .
+echo .
+echo .
+echo Insertiung new files into MySQL storage...
+
+python update_sql.py
+
+echo .
+echo .
+echo .
+echo SQL storage successful!
 echo .
 echo .
 echo .
