@@ -34,7 +34,7 @@ Data life-cycle project using Chicago crime data to better understand crime tren
 2 - [X] Clean, Process, and Load (ETL)
 3 - [ ] EDA FTW
 5 - [ ] Explore Time-Series Models
-6 - [ ] Bring in External Data
+6 - [X] Bring in External Data
 7 - [ ] Build Ensemble Model
 8 - [ ] Visualize and Report Results
 9 - [ ] Format into a presentation.
@@ -46,11 +46,19 @@ Data life-cycle project using Chicago crime data to better understand crime tren
 	|--> Data located at www.cityofchicago.org
 	|--> To load data through bat file, request API credentials
 	|--> Set API credentials into env variables 
-	|----> app: CHI_API_TOKEN     key: CHI_SECRET_TOKEN
+	|----> key: CHI_API_TOKEN 
 
-(2) RUN ./src/etl/process_data.bat
-	|--> Give up to 30 minutes to run
+(2) Set up storage environment
+	|--> Assumes MySQL Server 8.0 on localhost
+	|--> User defaults to 'root (change in load_into_sql.py if needed)
+	|--> Set MySQL root user password into env variables 
+	|----> pass: MYSQL_PASS
+
+()3 RUN ./src/etl/process_data.bat
+	|--> Give up to 35 minutes to run
 	|--> Cleaned files will write to /data/processed/
+	|--> Data also be loaded into MySQL DB
+	|----> DB: chicago_crime, TABLE: crime
 ```
 
 ## Updating Data
@@ -59,6 +67,7 @@ Data life-cycle project using Chicago crime data to better understand crime tren
 	|--> Give up to 15 minutes to run
 	|--> Cleaned files will write to /data/processed/
 	|--> Previous data set will store as data/interim/BACKUP-previous_version.csv
+	|--> MySQL DB will auto-update and insert the new data
 ```
 
 ## Model Overview
