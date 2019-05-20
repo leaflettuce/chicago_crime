@@ -38,10 +38,10 @@ data = json.loads(response.text)
 
 # set to df
 df = json_normalize(data)
-try:
-    df = df.drop(['location.latitude', 'location.longitude'], axis = 1)
-except:
-    pass
+#try:
+#    df = df.drop(['location.latitude', 'location.longitude'], axis = 1)
+#except:
+#    pass
 df = df.rename(columns={'location.human_address': 'location'})
 
 # write out new data
