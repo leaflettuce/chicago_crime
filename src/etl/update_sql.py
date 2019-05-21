@@ -39,7 +39,7 @@ def insert_crime(crime):
     query = "INSERT INTO crime(arrest, beat, block, case_number, community, date, description, district, domestic, fbi_code,\
                                 id, iucr, latitude, address, latitude_2, longitude_2, loc_description, longitude, primary_type, \
                                 updated_on, ward, x_coord, y_coord, year, time, hour, month, day, hour_bin, day_of_week, week_number) " \
-            "VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+            "VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) ON DUPLICATE KEY UPDATE id=id"
             
     try:
         cursor.executemany(query, crime)
