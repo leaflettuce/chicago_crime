@@ -50,13 +50,14 @@ ORDER BY daily_average DESC;
 # crime rates by location #
 ###########################
 
-SELECT ward AS location, AVG(type_counts.counts) AS daily_average
+SELECT community AS location, AVG(type_counts.counts) AS daily_average
 
 FROM (
-SELECT year, month, day, ward, COUNT(*) AS counts
+SELECT year, month, day, community, COUNT(*) AS counts
 FROM chicago_crime.crime
-GROUP BY year, month, day, ward
+WHERE community IS NOT NULL
+GROUP BY year, month, day, community
 ) AS type_counts
 
 GROUP BY location
-ORDER BY daily_average DESC;
+ORDER BY location ASC; # see map for community location
