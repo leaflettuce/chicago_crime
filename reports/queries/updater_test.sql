@@ -5,5 +5,5 @@ HAVING rate > 0
 ORDER BY month ASC, day ASC;
 
 SELECT * FROM chicago_crime.crime
-WHERE year = 2019 AND month = 5 AND day >= 10;
+WHERE year = 2019 AND month = 5 AND day >= 11;
 
