@@ -32,10 +32,10 @@ Data life-cycle project using Chicago crime data to better understand crime tren
 ```
 1 - [X] Import Data
 2 - [X] Clean, Process, and Load (ETL)
-3 - [ ] EDA FTW
-5 - [ ] Explore Time-Series Models
+3 - [X] EDA FTW
+5 - [ ] Build Time-Series Models
 6 - [X] Bring in External Data
-7 - [ ] Build Ensemble Model
+7 - [ ] Complete Ensemble Model
 8 - [ ] Visualize and Report Results
 9 - [ ] Format into a presentation.
 ```
@@ -72,7 +72,10 @@ Data life-cycle project using Chicago crime data to better understand crime tren
 
 ## Model Overview
 ```
-
+Rough Idea
+  (1) Seasonal ARIMA model based on weekly rates
+  (2) Proportion table of percent of crime per community per day-of-week per hour_bin
+  (3) Multiple (1) by (2) to create forecast matrix to schedule by!
 ```
 
 ## Results
