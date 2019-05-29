@@ -76,6 +76,11 @@ Rough Idea
   (1) Seasonal ARIMA model based on weekly rates
   (2) Proportion table of percent of crime per community per day-of-week per hour_bin
   (3) Multiple (1) by (2) to create forecast matrix to schedule by!
+  
+Model Evaluation
+   > Custom Loss function: Sum of Squared elements in Error Matrix
+   --> Error Matrix = M(pred) - M(actual)
+   --> Optimize ARIMA model by minimizing loss.
 ```
 
 ## Results
