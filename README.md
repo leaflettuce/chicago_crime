@@ -81,6 +81,7 @@ Model Evaluation
    > Custom Loss function: Sum of Squared elements in Error Matrix
    --> Error Matrix = M(pred) - M(actual)
    --> Optimize ARIMA model by minimizing loss.
+   > ARIMA model will first eval with AIC and RMSE
 ```
 
 ## Results
