@@ -8,8 +8,8 @@ import os
 import pandas as pd
 import statsmodels.api as sm
 import itertools
+import math
 import matplotlib.pyplot as plt
-import warnings
 plt.style.use('fivethirtyeight')
 
 # setwd
@@ -94,30 +94,33 @@ results.plot_diagnostics(figsize=(15, 12))
 plt.show()
 
 
-# set to test data   <- HERE!
-pred = results.get_prediction(start=850, dynamic=True, full_results=True)
+# set to test data
+pred = results.get_prediction(start=856, end=960,dynamic=True, full_results=True)
 pred_ci = pred.conf_int()
-
-ax = df.count[850:].plot(label='observed', figsize=(20, 15))
-pred.predicted_mean.plot(label='Dynamic Forecast', ax=ax)
-
+# map out actual and forecast on plot
+ax = df_test['count'].plot(label='Actual', figsize=(20, 15))
+pred.predicted_mean.plot(label='Forecast', ax=ax)
+## fill
 ax.fill_between(pred_ci.index,
                 pred_ci.iloc[:, 0],
                 pred_ci.iloc[:, 1], color='k', alpha=.25)
-
-ax.fill_betweenx(ax.get_ylim(), 850, 955,
+# background
+ax.fill_betweenx(ax.get_ylim(), 850, 960,
                  alpha=.1, zorder=-1)
 
 ax.set_xlabel('Date')
-ax.set_ylabel('CO2 Levels')
+ax.set_ylabel('Weekly Crime Rates')
 
 plt.legend()
 plt.show()
 
 # test forecast and get MSE
 y_forecasted = pred.predicted_mean
-y_truth = y[851:]
+y_truth = df_test['count']
 
 # Compute the mean square error
-mse = ((y_forecasted - y_truth) ** 2).mean()
-print('The Mean Squared Error of our forecasts is {}'.format(round(mse, 2)))
+rmse = math.sqrt(((y_forecasted - y_truth) ** 2).mean())
+print('The Root Mean Squared Error of our forecasts is {}'.format(round(rmse, 2)))
+
+p_rmse = rmse / y_truth.mean()
+print('Forecaster is off by an average of {}% each week.)'.format(round(p_rmse*100, 1)))
