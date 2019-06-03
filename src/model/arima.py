@@ -136,7 +136,8 @@ print('Forecaster is off by an average of {}% each week.)'.format(round(p_rmse*1
 # Get forecast 52 steps ahead in future
 pred_uc = results.get_prediction(start=955, end=1047, dynamic=True, full_results=True)
 #pred_uc = results.get_forecast(steps=52)
-
+year_pred = pred_uc.predicted_mean
+year_pred.to_csv('../../data/processed/arima_1_preds.csv')
 # Get confidence intervals of forecasts
 pred_ci = pred_uc.conf_int()
 
