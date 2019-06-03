@@ -22,9 +22,10 @@ df = pd.read_csv('../../data/processed/weekly_counts.csv')
 df.head()
 
 # reset index to overall week number
+df = df[df.week_number != 53]
+df = df.reset_index()
 df['order'] = df.index + 1
 df.index = df.order
-df = df.reset_index()
 series = df['count']
 
 # quick visualize
@@ -77,7 +78,7 @@ plt.tight_layout()
 # MODEL #
 #########
 # fit model
-model = SARIMAX(df_train, order = (1, 1, 3), seasonal_order = (1, 1, 1, 52), 
+model = SARIMAX(df_train, order = (1, 1, 2), seasonal_order = (1, 0, 1, 52), 
                 enforce_stationarity=False, enforce_invertibility=False)
 
 model_fit = model.fit(disp=False)
@@ -92,7 +93,7 @@ p_rmse = (rmse / df_test.mean())*100
 
 
 # plot it again
-plt.figure(figsize=(10,5))
+plt.figure(figsize=(20,10))
 plt.plot(series, 'b')
 plt.plot(forecast, 'r')
 
@@ -107,10 +108,11 @@ plt.axvline(x=series.index[len(df_train)], color='black')
 # prediction #
 ##############
 # predict out for 52
-model = SARIMAX(series, order = (1, 1, 1), seasonal_order = (1, 1, 1, 52), 
+model = SARIMAX(series, order = (1, 1, 2), seasonal_order = (1, 0, 1, 52), 
                 enforce_stationarity=False, enforce_invertibility=False)
 
 model_fit = model.fit(disp=False)
 
 # forecast it out
-forecast = model_fit.forecast(52)
+forecast = model_fit.forecast(52)   #.predicted_mean
+forecast.to_csv('../../data/processed/arima_2_preds.csv')
