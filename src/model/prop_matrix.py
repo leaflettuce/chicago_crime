@@ -98,5 +98,6 @@ prop_table = pd.read_csv('../../data/processed/prop_table_edit.csv', index_col =
 pred_table.sum().sum()
 preds[1]
 
+# write out prediction table
+pred_table.to_csv('../../reports/NEXT_WEEKS_PRED_MATRIX.csv')
 
-# create heatmap of pred_table
