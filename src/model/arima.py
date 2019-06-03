@@ -24,11 +24,14 @@ df.head()
 # PREPPING #
 ############
 
-# add interval column
-df['order'] = df.index + 1
 
 # drop week 53 rows  
 df = df[df.week_number != 53]
+df = df.reset_index()
+
+# add interval column
+df['order'] = df.index + 1
+df.index = df['order']
 
 # drop unneeded cols
 df_split = df[['order', 'count']]
@@ -95,17 +98,18 @@ plt.show()
 
 
 # set to test data
-pred = results.get_prediction(start=856, end=960,dynamic=True, full_results=True)
+pred = results.get_prediction(start=851, end=955,dynamic=True, full_results=True)
 pred_ci = pred.conf_int()
+
 # map out actual and forecast on plot
-ax = df_test['count'].plot(label='Actual', figsize=(20, 15))
+ax = df_split['count'].plot(label='Actual', figsize=(20, 15))
 pred.predicted_mean.plot(label='Forecast', ax=ax)
 ## fill
 ax.fill_between(pred_ci.index,
                 pred_ci.iloc[:, 0],
                 pred_ci.iloc[:, 1], color='k', alpha=.25)
 # background
-ax.fill_betweenx(ax.get_ylim(), 850, 960,
+ax.fill_betweenx(ax.get_ylim(), 851, 955,
                  alpha=.1, zorder=-1)
 
 ax.set_xlabel('Date')
@@ -124,3 +128,26 @@ print('The Root Mean Squared Error of our forecasts is {}'.format(round(rmse, 2)
 
 p_rmse = rmse / y_truth.mean()
 print('Forecaster is off by an average of {}% each week.)'.format(round(p_rmse*100, 1)))
+
+###################
+# forecasting out #
+###################
+
+# Get forecast 52 steps ahead in future
+pred_uc = results.get_prediction(start=955, end=1047, dynamic=True, full_results=True)
+#pred_uc = results.get_forecast(steps=52)
+
+# Get confidence intervals of forecasts
+pred_ci = pred_uc.conf_int()
+
+# pplot them out
+ax = df_split['count'].plot(label='Actual', figsize=(20, 15))
+pred_uc.predicted_mean.plot(ax=ax, label='Forecast')
+ax.fill_between(pred_ci.index,
+                pred_ci.iloc[:, 0],
+                pred_ci.iloc[:, 1], color='k', alpha=.25)
+ax.set_xlabel('Date')
+ax.set_ylabel('Weekly Rates')
+
+plt.legend()
+plt.show()
