@@ -91,7 +91,6 @@ forecast = model_fit.forecast(forecast_len)
 rmse = np.sqrt(((forecast - df_test) ** 2).mean())
 p_rmse = (rmse / df_test.mean())*100
 
-
 # plot it again
 plt.figure(figsize=(20,10))
 plt.plot(series, 'b')
@@ -103,6 +102,10 @@ plt.ylabel('Weekly Rates')
 plt.autoscale(enable=True, axis = 'x', tight=True)
 plt.axvline(x=series.index[len(df_train)], color='black')
 
+# write out for testing
+df_test.to_csv('../../data/processed/test_actuals.csv')
+
+forecast.to_csv('../../data/processed/test_forecasted.csv')
 
 ##############
 # prediction #
