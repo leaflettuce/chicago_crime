@@ -7,7 +7,6 @@ Created on Sat Jun  1 12:57:37 2019
 import os 
 import pandas as pd
 import statsmodels.api as sm
-import itertools
 import math
 import matplotlib.pyplot as plt
 plt.style.use('fivethirtyeight')

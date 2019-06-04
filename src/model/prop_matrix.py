@@ -42,6 +42,7 @@ prop_table.sum().sum() # .99998 is close enough
 # actual table
 actual_table = prop_table
 def set_actual(prop_table, i):
+    # set actual table based on weekly rate 
     actual_table = prop_table
     actual_table *= test_actuals[i]
     prop_table = pd.read_csv('../../data/processed/prop_table_edit.csv', index_col = 0) #reset prop
@@ -50,6 +51,7 @@ def set_actual(prop_table, i):
 # forecast table
 forecast_table = prop_table
 def set_forecast(prop_table, i):
+    # set forecast table based on weekly rate 
     forecast_table = prop_table
     forecast_table *= test_forecast[i]
     prop_table = pd.read_csv('../../data/processed/prop_table_edit.csv', index_col = 0) #reset prop
@@ -60,6 +62,7 @@ def set_forecast(prop_table, i):
 ############
 
 def check_error(matrix_forecast, matrix_actual, sse_total):
+    # iterate through length of matrix and subtract actual from forecast
     error_matrix = matrix_forecast.sub(matrix_actual)
     error_matrix = np.square(error_matrix)
     sse = error_matrix.sum().sum()
@@ -69,7 +72,7 @@ def check_error(matrix_forecast, matrix_actual, sse_total):
     
 # check against actual
 sse_total = 0
-for i in range(0, len(test_actuals) - 1):
+for i in range(0, len(test_actuals) - 1):   # drop last, unfinished week
     forecast_table, prop_table = set_forecast(prop_table, i)
     actual_table, prop_table = set_actual(prop_table, i)
     
@@ -80,11 +83,28 @@ for i in range(0, len(test_actuals) - 1):
 #print('Average Weekly Error Rate: %.2f' %(avg_error))
  
 # example error
-error_matrix = forecast_table.sub(actual_table)
+error_matrix = np.abs(forecast_table.sub(actual_table))
 avg_error_intersect = error_matrix.sum().sum()/(77*21)
 print('Example Error Rate per intersect: %.2f' %(avg_error_intersect))
 
+###############################
+## check again tableau actual #
+###############################
+forecast_table, prop_table = set_forecast(prop_table, (len(test_actuals)-2))
+#m tableau actuals
+tableau_actual = pd.read_csv('../../data/processed/tableau_actual_week.csv', index_col = 0)
+tableau_actual = tableau_actual.fillna(0)
 
+# get error ss
+tableau_error_matrix = forecast_table.sub(tableau_actual)
+
+# do maths
+tableau_avg_error_intersect = tableau_error_matrix.sum().sum()/(77*21)
+print('Example Error Rate per intersect: %.2f' %(tableau_avg_error_intersect))
+
+tableau_error_matrix = np.abs(np.round(tableau_error_matrix, 0))
+tableau_err_sum = tableau_error_matrix.sum().sum()
+print('Example Error Rate per intersect: %.2f' %(tableau_err_sum/(77*21)))
 
 ##############
 # FINAL PRED #
@@ -92,6 +112,7 @@ print('Example Error Rate per intersect: %.2f' %(avg_error_intersect))
 # next week predictions 
 pred_table = prop_table
 pred_table *= preds[1]
+pred_table = np.round(pred_table, 0)
 prop_table = pd.read_csv('../../data/processed/prop_table_edit.csv', index_col = 0) #reset prop
 
 # check element equal total for week

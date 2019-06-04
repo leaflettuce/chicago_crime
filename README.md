@@ -33,9 +33,9 @@ Data life-cycle project using Chicago crime data to better understand crime tren
 1 - [X] Import Data
 2 - [X] Clean, Process, and Load (ETL)
 3 - [X] EDA FTW
-5 - [ ] Build Time-Series Models
+5 - [X] Build Time-Series Models
 6 - [X] Bring in External Data
-7 - [ ] Complete Ensemble Model
+7 - [X] Complete Ensemble Model
 8 - [ ] Visualize and Report Results
 9 - [ ] Format into a presentation.
 ```
@@ -54,7 +54,7 @@ Data life-cycle project using Chicago crime data to better understand crime tren
 	|--> Set MySQL root user password into env variables 
 	|----> pass: MYSQL_PASS
 
-()3 RUN ./src/etl/process_data.bat
+(3) RUN ./src/etl/process_data.bat
 	|--> Give up to 35 minutes to run
 	|--> Cleaned files will write to /data/processed/
 	|--> Data also be loaded into MySQL DB
@@ -78,10 +78,17 @@ Rough Idea
   (3) Multiple (1) by (2) to create forecast matrix to schedule by!
   
 Model Evaluation
-   > Custom Loss function: Sum of Squared elements in Error Matrix
-   --> Error Matrix = M(pred) - M(actual)
-   --> Optimize ARIMA model by minimizing loss.
-   > ARIMA model will first eval with AIC and RMSE
+   -> ARIMA model will first be evaluated with AIC and RMSE
+   -> Custom Loss function: Sum of Squared elements in Error Matrix
+   |--> Error Matrix = M(pred) - M(actual)
+   |--> Optimize ARIMA model by minimizing loss.
+   
+Model Results
+   -> SARIMAX of (1, 1, 2)(1, 0, 1)52 
+   |--> RSME of around 350,  6.8% error rate average
+   -> Prediction Matrix = SARIMAX forecast * avg_prop_table
+   |--> SSE average of 323
+   |--> Average error per location x time intersect = 0.2
 ```
 
 ## Results

@@ -29,11 +29,14 @@ df.index = df.order
 series = df['count']
 
 # quick visualize
-plt.plot(series)      # NOTE - Series is additive - not need to log!
+plt.plot(series)
 
 # split test and train
 df_train = series[:850]
 df_test = series[850:]
+
+# try logging train
+#df_train = np.log(df_train)                # for trying log
 
 # set differencing period
 df_train_diff = df_train.diff(periods=1).values[1:]
@@ -86,6 +89,7 @@ model_fit = model.fit(disp=False)
 # forecast it out
 forecast_len = len(df_test)
 forecast = model_fit.forecast(forecast_len)
+#forecast = np.exp(forecast)                          # for log correction
 
 # eval metrics
 rmse = np.sqrt(((forecast - df_test) ** 2).mean())
@@ -119,3 +123,24 @@ model_fit = model.fit(disp=False)
 # forecast it out
 forecast = model_fit.forecast(52)   #.predicted_mean
 forecast.to_csv('../../data/processed/arima_2_preds.csv')
+
+# visualize forecast
+# Get forecast 52 steps ahead in future
+pred_uc = model_fit.get_prediction(start=955, end=1047, dynamic=True, full_results=True)
+pred_ci = pred_uc.conf_int()
+
+year_pred = pred_uc.predicted_mean
+
+
+# pplot them out
+ax = series.plot(label='Actual', figsize=(20, 15))
+pred_uc.predicted_mean.plot(ax=ax, label='Forecast')
+ax.fill_between(pred_ci.index,
+                pred_ci.iloc[:, 0],
+                pred_ci.iloc[:, 1], color='k', alpha=.25)
+ax.set_xlabel('Date')
+ax.set_ylabel('Weekly Rates')
+plt.title('Weekly Crime Rates for Chicago', fontsize = '32')
+plt.axvline(x=955, color='black', linewidth = '2.5')
+plt.legend()
+plt.show()
