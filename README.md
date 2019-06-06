@@ -78,15 +78,15 @@ Rough Idea
   (3) Multiple (1) by (2) to create forecast matrix to schedule by!
   
 Model Evaluation
-   -> ARIMA model will first be evaluated with AIC and RMSE
-   -> Custom Loss function: Sum of Squared elements in Error Matrix
+   o - ARIMA model will first be evaluated with AIC and RMSE
+   o - Custom Loss function: Sum of Squared elements in Error Matrix
    |--> Error Matrix = M(pred) - M(actual)
    |--> Optimize ARIMA model by minimizing loss.
    
 Model Results
-   -> SARIMAX of (1, 1, 2)(1, 0, 1)52 
+   o - SARIMAX best fit: (1, 1, 2)(1, 0, 1)52 
    |--> RSME of around 350,  6.8% error rate average
-   -> Prediction Matrix = SARIMAX forecast * avg_prop_table
+   o - Prediction Matrix = SARIMAX forecast * avg_prop_table
    |--> SSE average of 323
    |--> Average error per location x time intersect = 0.2
 ```
