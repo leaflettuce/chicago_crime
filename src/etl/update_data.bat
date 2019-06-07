@@ -31,7 +31,7 @@ echo crime.csv = final data set, [detail_level]_counts = model_requs
 echo .
 echo .
 echo .
-echo Insertiung new files into MySQL storage...
+echo Inserting new files into MySQL storage...
 
 python update_sql.py
 

@@ -18,3 +18,6 @@ if not os.path.exists('../../data/interim'):
     
 if not os.path.exists('../../data/processed'):
     os.mkdir('../../data/processed')
+
+if not os.path.exists('../../data/processed'):
+    os.mkdirs('../../reports/visuals/updated')

@@ -66,3 +66,4 @@ df.to_csv(upload_dir + upload_file + '.csv', index = False)
 # update last update txt file
 with open('last_update.txt', 'w') as f:
     f.write(max(df.iloc[:, 5]))
+    

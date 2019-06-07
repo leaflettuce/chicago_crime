@@ -91,6 +91,15 @@ Model Results
    |--> Average error per location x time intersect = 0.2
 ```
 
+## Running Forecaster
+```
+  RUN ./src/model/get_preds_and_visuals.bat
+    |--> Forecasts 6 crime rates 6 months out.
+	|--> Give up to 5 minutes to run.
+	|--> Predicted values will write to /data/processed/predictions.csv
+	|--> Forecast and heatmap visuals will save to reports/visuals/updated/
+```
+
 ## Results
 ```
 
