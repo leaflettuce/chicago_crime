@@ -5,7 +5,6 @@ Created on Mon May 20 07:58:09 2019
 @author: andyj
 """
 
-
 import os 
 import pandas as pd
 import numpy as np
@@ -61,3 +60,4 @@ df = df.drop(['datetime', 'full_date'], axis = 1) # drop helper
 upload_dir = 'E:/projects/chi_crime/data/processed/'
 upload_file = 'most_recent'
 df.to_csv(upload_dir + upload_file + '.csv', index = False)
+
