@@ -67,13 +67,3 @@ df.to_csv(upload_dir + upload_file + '.csv', index = False)
 with open('last_update.txt', 'w') as f:
     f.write(max(df.iloc[:, 5]))
     
-
-# WEEKLY
-# # Agg weekly Counts
-####################
-df['count'] = 0 # helper col 
-df_weekly = df.groupby(['year', 'week_number'])['count'].agg('count').reset_index()
-
-# Write Out
-upload_file = 'weekly_counts'
-df_weekly.to_csv(upload_dir + upload_file + '.csv', index = False)
