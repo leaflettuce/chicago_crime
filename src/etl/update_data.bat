@@ -18,7 +18,9 @@ echo .
 echo Cleaning new version of data and processing model requirements...
 
 python clean.py
+echo .
 python clean_new_data.py
+
 echo .
 echo .
 echo . 

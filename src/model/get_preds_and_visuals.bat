@@ -14,7 +14,8 @@ echo Forecaster Complete!
 echo Forecast chart created and stored.. Heatmap time!
 
 
-:: python make_heatmap.py   <- to do
+cd ../visuals
+python matrix_map.py 
 
 echo .
 echo .

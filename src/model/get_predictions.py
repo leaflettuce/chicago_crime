@@ -70,3 +70,14 @@ plt.show()
 
 # write it
 plt.savefig('../../reports/visuals/updated/6m-forecast.png')
+
+
+# getg pred matrix
+pred_table = pd.read_csv('../../data/processed/prop_table_edit.csv', index_col = 0)
+preds = forecast.reset_index(drop=True)
+next_week_pred = preds[1]
+pred_table *= next_week_pred
+pred_table = np.round(pred_table, 0)
+
+# write out prediction table
+pred_table.to_csv('../../reports/NEXT_WEEKS_PRED_MATRIX.csv')
