@@ -66,7 +66,17 @@ plt.title('Weekly Crime Rates for Chicago', fontsize = '32')
 plt.axvline(x=len(series), color='black', linewidth = '2.5')
 plt.text(x=len(series)+.5, y=6250, s='Today', fontsize=14)
 plt.legend()
-plt.show()
-
+#plt.show()
 # write it
 plt.savefig('../../reports/visuals/updated/6m-forecast.png')
+
+
+# getg pred matrix
+pred_table = pd.read_csv('../../data/processed/prop_table_edit.csv', index_col = 0)
+preds = forecast.reset_index(drop=True)
+next_week_pred = preds[1]
+pred_table *= next_week_pred
+pred_table = np.round(pred_table, 0)
+
+# write out prediction table
+pred_table.to_csv('../../reports/NEXT_WEEKS_PRED_MATRIX.csv')

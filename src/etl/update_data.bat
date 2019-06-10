@@ -3,7 +3,7 @@ title Updates Chicago crime data
 :: Runs all py files to clean and organize updated data
 
 echo Updating crime data based on last import or update.
-echo Please wait ;)
+echo Please wait...
 
 python updater.py
 
@@ -18,7 +18,9 @@ echo .
 echo Cleaning new version of data and processing model requirements...
 
 python clean.py
+echo .
 python clean_new_data.py
+
 echo .
 echo .
 echo . 
