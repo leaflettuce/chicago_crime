@@ -66,8 +66,7 @@ plt.title('Weekly Crime Rates for Chicago', fontsize = '32')
 plt.axvline(x=len(series), color='black', linewidth = '2.5')
 plt.text(x=len(series)+.5, y=6250, s='Today', fontsize=14)
 plt.legend()
-plt.show()
-
+#plt.show()
 # write it
 plt.savefig('../../reports/visuals/updated/6m-forecast.png')
 

@@ -55,7 +55,6 @@ df['week_number'] = df['datetime'].dt.week
 # Prune features
 df = df.drop(['datetime', 'full_date'], axis = 1) # drop helper
 
-
 # Write Out
 upload_dir = 'E:/projects/chi_crime/data/processed/'
 upload_file = 'most_recent'

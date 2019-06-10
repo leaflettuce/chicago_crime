@@ -3,7 +3,7 @@ title Updates Chicago crime data
 :: Runs all py files to clean and organize updated data
 
 echo Running model, forecatsing, and cooking up visuals
-echo Please wait ;)
+echo Please wait...
 
 python get_predictions.py
 
@@ -19,5 +19,7 @@ python matrix_map.py
 
 echo .
 echo .
-echo .Heatmap complete and stored! 
+echo .
+echo Heatmap complete and stored! 
+cd ..
 echo ALL DONE! Have a good day :)
