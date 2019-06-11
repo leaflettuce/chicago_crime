@@ -67,7 +67,7 @@ title_str = 'Actual and Forecast Weekly Crime Rates for Chicago (%s - %s)' % (st
 
 # pplot them out
 series_cut = series[-104:]
-ax = series_cut.plot(label='Actual', figsize=(20, 15))
+ax = series_cut.plot(label='Actual', figsize=(28, 15))
 pred_uc.predicted_mean.plot(ax=ax, label='Forecast')
 ax.fill_between(pred_ci.index,
                 pred_ci.iloc[:, 0]+500,
