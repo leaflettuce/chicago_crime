@@ -60,7 +60,7 @@ start_date_str = start_date.strftime("%B %y")
 end_date = datetime.today() + timedelta(weeks = 24)
 end_date_str = end_date.strftime("%B %y")
 
-mid_date = datetime.today() - timedelta(weeks = 52)
+mid_date = datetime.today() - timedelta(weeks = 40)
 mid_date_str = mid_date.strftime("%B %y")
 
 title_str = 'Actual and Forecast Weekly Crime Rates for Chicago (%s - %s)' % (start_date_str, end_date_str)
