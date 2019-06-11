@@ -43,11 +43,28 @@ df.index = df.name # replace index
 df = df.drop(['name'], axis = 1) # drop helper
 
 
+# helper dates
+from datetime import datetime, timedelta
+
+# get sunday
+idx = (datetime.today().weekday() + 1) % 7 # MON = 0, SUN = 6 -> SUN = 0 .. SAT = 6
+sun = datetime.today() - timedelta(idx)
+start_date_str = sun.strftime("%B %d")
+
+end_date = sun + timedelta(days = 6)
+end_date_str = end_date.strftime("%d")
+
+
 # visualize
-plt.figure(figsize=(30,60))
-sns.heatmap(df, annot=True, linewidths=.5, cmap="Reds", vmin = 0, vmax = 10, cbar=False)
-plt.yticks(rotation=0)
-plt.title('Predicted Crime Rates for Chicago Neighborhoods by 8-Hour Blocks (3/9 - 3/15)')
+plt.figure(figsize=(46,52))
+sns.set(font_scale=1.25)
+ax = sns.heatmap(df, annot=True, linewidths=.6, cmap="Reds", vmin = 0, vmax = 9, cbar=False)
+plt.yticks(rotation=0, fontsize = 18)
+plt.xticks(rotation=90, fontsize = 22)
+ax.set_xlabel('Day - Time', fontsize = 26)
+ax.set_ylabel('Neighborhood', fontsize = 26)
+plt.text(-0.1, -1, 'Predicted Crime Rates for Chicago Neighborhoods by 8-Hour Interval (%s - %s)' %(start_date_str, end_date_str), 
+          fontsize = 78)
            
 # write it
 plt.savefig('../../reports/visuals/updated/pred_matrix.png')

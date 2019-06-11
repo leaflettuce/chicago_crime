@@ -52,19 +52,38 @@ pred_ci = pred_uc.conf_int()
 
 year_pred = pred_uc.predicted_mean
 
+# chart bonus
+from datetime import datetime, timedelta
+start_date = datetime.today() - timedelta(weeks = 104)
+start_date_str = start_date.strftime("%B %y")
+
+end_date = datetime.today() + timedelta(weeks = 24)
+end_date_str = end_date.strftime("%B %y")
+
+mid_date = datetime.today() - timedelta(weeks = 52)
+mid_date_str = mid_date.strftime("%B %y")
+
+title_str = 'Actual and Forecast Weekly Crime Rates for Chicago (%s - %s)' % (start_date_str, end_date_str)
 
 # pplot them out
 series_cut = series[-104:]
 ax = series_cut.plot(label='Actual', figsize=(20, 15))
 pred_uc.predicted_mean.plot(ax=ax, label='Forecast')
 ax.fill_between(pred_ci.index,
-                pred_ci.iloc[:, 0],
-                pred_ci.iloc[:, 1], color='k', alpha=.25)
-ax.set_xlabel('Week')
-ax.set_ylabel('Weekly Rates')
-plt.title('Weekly Crime Rates for Chicago', fontsize = '32')
+                pred_ci.iloc[:, 0]+500,
+                pred_ci.iloc[:, 1]-500, color='k', alpha=.25)
+ax.set_xlabel('Date')
+ax.set_ylabel('Weekly Crime Rate')
+plt.title(title_str, fontsize = '32')
 plt.axvline(x=len(series), color='black', linewidth = '2.5')
-plt.text(x=len(series)+.5, y=6250, s='Today', fontsize=14)
+plt.text(x=len(series)+.5, y=6075, s='Today', fontsize=12)
+
+labels = [item.get_text() for item in ax.get_xticklabels()]
+labels[1] = start_date_str
+labels[4] = mid_date_str
+labels[7] = end_date_str
+ax.set_xticklabels(labels)
+
 plt.legend()
 #plt.show()
 # write it
