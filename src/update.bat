@@ -19,3 +19,20 @@ call get_preds_and_visuals.bat
 echo --------------------
 echo SYSTEM FULLY UPDATED
 echo --------------------
+
+echo -------------------
+echo PUSHING TO WEBSITE
+echo -------------------
+
+call robocopy E:\projects\chi_crime\reports\visuals\updated E:\projects\DSblog\content\img\chi_crime /e
+
+e:
+cd projects/dsblog
+call git add .
+call git commit -m "updating Chicago Crime visuals."
+call git push origin master
+
+cd output
+call aws s3 sync . s3://andrewtrick.com
+
+echo "Update Complete. <(^.^<) <(^.^)> (>^.^)>"
