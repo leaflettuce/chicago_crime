@@ -37,6 +37,7 @@ call git commit -m "updating Chicago Crime visuals."
 call git push origin master
 
 cd output
+call activate root
 call aws s3 sync . s3://andrewtrick.com
 
 echo "Update Complete. <(^.^<) <(^.^)> (>^.^)>"
