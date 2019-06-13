@@ -28,6 +28,10 @@ call robocopy E:\projects\chi_crime\reports\visuals\updated E:\projects\DSblog\c
 
 e:
 cd projects/dsblog
+
+call activate pelican1
+call pelican content -s publishconf.py
+
 call git add .
 call git commit -m "updating Chicago Crime visuals."
 call git push origin master

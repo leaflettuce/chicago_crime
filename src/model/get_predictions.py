@@ -55,13 +55,13 @@ year_pred = pred_uc.predicted_mean
 # chart bonus
 from datetime import datetime, timedelta
 start_date = datetime.today() - timedelta(weeks = 104)
-start_date_str = start_date.strftime("%B %y")
+start_date_str = start_date.strftime("%B %Y")
 
 end_date = datetime.today() + timedelta(weeks = 24)
-end_date_str = end_date.strftime("%B %y")
+end_date_str = end_date.strftime("%B %Y")
 
 mid_date = datetime.today() - timedelta(weeks = 40)
-mid_date_str = mid_date.strftime("%B %y")
+mid_date_str = mid_date.strftime("%B %Y")
 
 title_str = 'Actual and Forecast Weekly Crime Rates for Chicago (%s - %s)' % (start_date_str, end_date_str)
 
