@@ -36,7 +36,7 @@ Data life-cycle project using Chicago crime data to better understand crime tren
 5 - [X] Build Time-Series Models
 6 - [X] Bring in External Data
 7 - [X] Complete Ensemble Model
-8 - [ ] Visualize and Report Results
+8 - [X] Visualize and Report Results
 9 - [ ] Format into a presentation.
 ```
 
