@@ -34,14 +34,13 @@ call git commit -m "Weekly Update."
 call git push origin master
 
 
-call e:
-cd projects/dsblog
+cd ../dsblog
 
 call activate pelican1
 call pelican content -s publishconf.py
 
 call git add .
-call git commit -m "updating Chicago Crime visuals."
+call git commit -m "Weekly Chicago Crime Visual Update."
 call git push origin master
 
 cd output

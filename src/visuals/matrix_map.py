@@ -63,8 +63,8 @@ plt.yticks(rotation=0, fontsize = 18)
 plt.xticks(rotation=90, fontsize = 22)
 ax.set_xlabel('Day - Time', fontsize = 26)
 ax.set_ylabel('Neighborhood', fontsize = 26)
-plt.text(-0.1, -1, 'Predicted Crime Rates for Chicago Neighborhoods by 8-Hour Interval (%s - %s)' %(start_date_str, end_date_str), 
-          fontsize = 78)
+plt.text(-0.1, -1, 'Predicted Crime Rates for Chicago Neighborhoods \nBy 8-Hour Interval (%s - %s)' %(start_date_str, end_date_str), 
+          fontsize = 105)
            
 # write it
 plt.savefig('../../reports/visuals/updated/pred_matrix.png')
