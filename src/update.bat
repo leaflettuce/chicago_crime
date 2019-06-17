@@ -26,7 +26,15 @@ echo -------------------
 
 call robocopy E:\projects\chi_crime\reports\visuals\updated E:\projects\DSblog\content\img\chi_crime /e
 
-e:
+cd ../..
+
+
+call git add .
+call git commit -m "Weekly Update."
+call git push origin master
+
+
+call e:
 cd projects/dsblog
 
 call activate pelican1
