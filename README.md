@@ -98,18 +98,14 @@ Model Results
 	|--> Give up to 5 minutes to run.
 	|--> Predicted values will write to /data/processed/predictions.csv
 	|--> Forecast and heatmap visuals will save to reports/visuals/updated/
-	
-  NOTE update.bat current version set for personal dir and live updating
-       Edit this manually or can instead run following to update:
-    |--> (1) ./etl/update_data.bat
-	|--> (2) ./model/get_preds_and_visuals.bat
 ```
 
 ## Results
 ```
-o -
-o -
-o -
-o -
-o -
+o - Entire pipeline automated through src/update.bat and set to run weekly
+  |--> Updates data, model, and visuals before then pushing to AWS
+o - Accurately predicting Chicago crime rates at 94.2% accuracy
+o - Accurately distributing by neighborhood and 8-hour time grouping at 92% accuracy
+o - Final presentation successful in representing project and suggest methods to migrate to 'live' environment
+o - Backup storage in MySQL DB for any other needs
 ```
