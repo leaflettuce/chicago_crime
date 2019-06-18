@@ -21,5 +21,7 @@ echo .
 echo .
 echo .
 echo Heatmap complete and stored! 
-cd ..
+
+cd ../model
+
 echo ALL DONE! Have a good day :)

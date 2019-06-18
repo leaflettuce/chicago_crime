@@ -2,6 +2,8 @@ echo off
 title Updated chicaho crime data and runs new model/visuals
 :: Runs all py files to clean and organize updated data
 
+call activate tensorflow
+
 echo --------------------
 echo RUNNING DATA UPDATER
 echo --------------------
