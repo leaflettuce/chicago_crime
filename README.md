@@ -37,7 +37,7 @@ Data life-cycle project using Chicago crime data to better understand crime tren
 6 - [X] Bring in External Data
 7 - [X] Complete Ensemble Model
 8 - [X] Visualize and Report Results
-9 - [ ] Format into a presentation.
+9 - [X] Format into a presentation.
 ```
 
 ## Loading Data
@@ -98,9 +98,18 @@ Model Results
 	|--> Give up to 5 minutes to run.
 	|--> Predicted values will write to /data/processed/predictions.csv
 	|--> Forecast and heatmap visuals will save to reports/visuals/updated/
+	
+  NOTE update.bat current version set for personal dir and live updating
+       Edit this manually or can instead run following to update:
+    |--> (1) ./etl/update_data.bat
+	|--> (2) ./model/get_preds_and_visuals.bat
 ```
 
 ## Results
 ```
-
+o -
+o -
+o -
+o -
+o -
 ```
