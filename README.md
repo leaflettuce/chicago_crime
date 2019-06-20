@@ -80,32 +80,32 @@ Rough Idea
 Model Evaluation
    o - ARIMA model will first be evaluated with AIC and RMSE
    o - Custom Loss function: Sum of Squared elements in Error Matrix
-   |--> Error Matrix = M(pred) - M(actual)
-   |--> Optimize ARIMA model by minimizing loss.
+     |--> Error Matrix = M(pred) - M(actual)
+     |--> Optimize ARIMA model by minimizing loss.
    
 Model Results
    o - SARIMAX best fit: (1, 1, 2)(1, 0, 1)52 
-   |--> RSME of around 350,  6.8% error rate average
+     |--> RSME of around 350,  6.8% error rate average
    o - Prediction Matrix = SARIMAX forecast * avg_prop_table
-   |--> SSE average of 323
-   |--> Average error per location x time intersect = 0.2
+     |--> SSE average of 323
+     |--> Average error per location x time intersect = 0.2
 ```
 
 ## Running Forecaster
 ```
-  RUN ./src/model/get_preds_and_visuals.bat
-    |--> Forecasts 6 crime rates 6 months out.
-	|--> Give up to 5 minutes to run.
-	|--> Predicted values will write to /data/processed/predictions.csv
-	|--> Forecast and heatmap visuals will save to reports/visuals/updated/
+RUN ./src/model/get_preds_and_visuals.bat
+  |--> Forecasts weekly crime rates 6 months out.
+  |--> Give up to 5 minutes to run.
+  |--> Predicted values will write to /data/processed/predictions.csv
+  |--> Forecast and heatmap visuals will save to reports/visuals/updated/
 ```
 
 ## Results
 ```
 o - Entire pipeline automated through src/update.bat and set to run weekly
-  |--> Updates data, model, and visuals before then pushing to AWS
-o - Accurately predicting Chicago crime rates at 94.2% accuracy
-o - Accurately distributing by neighborhood and 8-hour time grouping at 92% accuracy
-o - Final presentation successful in representing project and suggest methods to migrate to 'live' environment
-o - Backup storage in MySQL DB for any other needs
+  |--> Updates data, DB, model results, and visuals and then pushes to AWS
+o - Predicting Chicago crime rates at 94.2% accuracy
+o - Distributing weekly rates by neighborhood and 8-hour time grouping at 92% accuracy
+o - Final presentation successful in representing project and suggests migration method
+o - Backup storage in MySQL DB for any querying needs
 ```
